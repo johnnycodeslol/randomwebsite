@@ -1,40 +1,51 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>THE WEIRDEST WEBSITE 🤪</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boring Chair</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
-    html, body {
+    body, html {
       margin: 0;
+      padding: 0;
       height: 100%;
-      background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00);
-      background-size: 600% 600%;
-      animation: bgshift 20s infinite alternate ease-in-out;
-      font-family: "Comic Sans MS", cursive;
-      overflow: hidden;
-      cursor: crosshair;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #111;
+      color: white;
+      font-family: 'Arial', sans-serif;
     }
-    @keyframes bgshift {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
+    model-viewer {
+      width: 80vmin;
+      height: 80vmin;
+      animation: colorShift 10s infinite alternate;
     }
-    h1 {
-      font-size: 5em;
-      text-align: center;
-      margin: 0;
-      padding: 0.5em;
-      color: #fff;
-      text-shadow: 3px 3px 0px #000, -3px -3px 0px hotpink;
-      animation: wiggle 1s infinite alternate ease-in-out;
+    @keyframes colorShift {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
     }
-    @keyframes wiggle {
-      0% { transform: rotate(-3deg) scale(1); }
-      100% { transform: rotate(3deg) scale(1.1); }
-    }
-    .marquee {
+    .title {
       position: absolute;
-      bottom: 0;
-      width: 100%;
-      font-size: 2em;
+      top: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    }
+  </style>
+</head>
+<body>
+  <div class="title">Boring Chair</div>
+  <model-viewer src="https://johnnycodeslol.github.io/randomwebsite/chair_glb.glb"
+                alt="3D Chair"
+                auto-rotate
+                camera-controls
+                background-color="#222"
+                shadow-intensity="1">
+  </model-viewer>
+</body>
+</html>      font-size: 2em;
       color: yellow;
       white-space: nowrap;
       overflow: hidden;
@@ -96,7 +107,7 @@
       }
     }
 
-    // weird cursor trail
+    
     document.addEventListener("mousemove", e => {
       const trail = document.createElement("div");
       trail.textContent = EMOJIS[Math.floor(Math.random()*EMOJIS.length)];
