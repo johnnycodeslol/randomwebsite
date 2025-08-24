@@ -1,1 +1,111 @@
-Hello World!
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>THE WEIRDEST WEBSITE 🤪</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00);
+      background-size: 600% 600%;
+      animation: bgshift 20s infinite alternate ease-in-out;
+      font-family: "Comic Sans MS", cursive;
+      overflow: hidden;
+      cursor: crosshair;
+    }
+    @keyframes bgshift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    h1 {
+      font-size: 5em;
+      text-align: center;
+      margin: 0;
+      padding: 0.5em;
+      color: #fff;
+      text-shadow: 3px 3px 0px #000, -3px -3px 0px hotpink;
+      animation: wiggle 1s infinite alternate ease-in-out;
+    }
+    @keyframes wiggle {
+      0% { transform: rotate(-3deg) scale(1); }
+      100% { transform: rotate(3deg) scale(1.1); }
+    }
+    .marquee {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      font-size: 2em;
+      color: yellow;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll 15s linear infinite;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    .floating-emoji {
+      position: absolute;
+      font-size: 3em;
+      animation: floaty 10s infinite;
+      user-select: none;
+    }
+    @keyframes floaty {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-200px) rotate(180deg); }
+      100% { transform: translateY(0) rotate(360deg); }
+    }
+    .weird-button {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) rotate(0deg);
+      padding: 2em;
+      font-size: 2em;
+      border: 5px dashed lime;
+      border-radius: 50%;
+      background: hotpink;
+      color: #000;
+      animation: spin 5s infinite linear;
+    }
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>💥 WELCOME TO CHAOS 💥</h1>
+  <div class="marquee"><span>🦄✨🍕👾🌀🌈🔥💃 THE WEIRDEST WEBSITE EVER MADE!!! 🦑👽🎺🎲🤡💥🍄🧟‍♂️🧚‍♀️🪄</span></div>
+  <button class="weird-button" onclick="summonWeirdness()">CLICK ME 😱</button>  <script>
+    const EMOJIS = ["🦄","👾","🌀","🌈","🧪","🐙","🔥","✨","🍕","💥","🍄","🤖","🎺"];
+
+    function summonWeirdness(){
+      for(let i=0;i<10;i++){
+        const e = document.createElement("div");
+        e.className = "floating-emoji";
+        e.textContent = EMOJIS[Math.floor(Math.random()*EMOJIS.length)];
+        e.style.left = Math.random()*100+"vw";
+        e.style.top = Math.random()*100+"vh";
+        e.style.animationDuration = (5+Math.random()*10)+"s";
+        document.body.appendChild(e);
+        setTimeout(()=>e.remove(),15000);
+      }
+    }
+
+    // weird cursor trail
+    document.addEventListener("mousemove", e => {
+      const trail = document.createElement("div");
+      trail.textContent = EMOJIS[Math.floor(Math.random()*EMOJIS.length)];
+      trail.style.position = "absolute";
+      trail.style.left = e.pageX + "px";
+      trail.style.top = e.pageY + "px";
+      trail.style.fontSize = "2em";
+      document.body.appendChild(trail);
+      setTimeout(()=>trail.remove(), 1000);
+    });
+  </script></body>
+</html>
